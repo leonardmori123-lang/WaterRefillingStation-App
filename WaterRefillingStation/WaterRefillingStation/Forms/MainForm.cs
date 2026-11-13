@@ -57,14 +57,11 @@ namespace WaterRefillingStation.Forms
                 grid.Columns[column].HeaderText = text;
         }
 
-        // Opens a screen as a dialog, then refreshes the dashboard when it closes.
+        // Hides the dashboard, opens the screen, and brings the dashboard back (refreshed) when it closes.
         private void OpenForm(Form form)
         {
-            using (form)
-            {
-                form.ShowDialog(this);
-            }
-            LoadDashboard();
+            form.FormClosed += (s, e) => LoadDashboard();
+            FormNavigator.Open(this, form);
         }
 
         private void btnCustomers_Click(object sender, EventArgs e)

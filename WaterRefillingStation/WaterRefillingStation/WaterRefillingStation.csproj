@@ -64,6 +64,7 @@
     <Compile Include="Forms\DeliveriesForm.Designer.cs">
       <DependentUpon>DeliveriesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormNavigator.cs" />
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
