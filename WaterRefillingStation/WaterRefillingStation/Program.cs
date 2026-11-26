@@ -9,8 +9,22 @@ namespace WaterRefillingStation
     internal static class Program
     {
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
+            // The installer runs "WaterRefillingStation.exe /initdb" to create the database during setup.
+            // This path shows no windows at all and always exits, so it can never hang the installer.
+            if (args.Length > 0 && string.Equals(args[0], "/initdb", StringComparison.OrdinalIgnoreCase))
+            {
+                try
+                {
+                    Db.Initialize();
+                }
+                catch
+                {
+                }
+                Environment.Exit(0);
+            }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
